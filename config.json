@@ -1,0 +1,17 @@
+{
+    "audio_bitrate": "480k",
+    "audio_channels": 1,
+    "audio_chunk": 1024,
+    "audio_file_format": "aac",
+    "audio_format": 8,
+    "audio_output_format": "adts",
+    "audio_rate": 44100,
+    "audio_save_path": "D:\\BSR-Data",
+    "audio_seg_duration": 10,
+    "rec_start_failed_stop": 0,
+    "rec_start_failed_wait": 20,
+    "record_save_join_timeout": 60,
+    "recording_failed_stop": 10,
+    "recording_failed_wait": 1,
+    "shutdown_listener_title": "BackSoundRec Shutdown Listener"
+}
