@@ -1,4 +1,4 @@
-from os.path import expandvars, join
+from os.path import expandvars, join, isfile, dirname, split
 from sys import executable, argv
 
 from typing import Tuple, List
@@ -22,8 +22,13 @@ def get_launch_cmd() -> Tuple[str, List[str]]:
 
 def set_auto_startup():
     lnk_path = join(expandvars(r"%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"), "BSR Auto Startup.lnk")
+    if isfile(lnk_path):
+        return
     target_exe, args = get_launch_cmd()
-    pylnk3.for_file(target_exe, lnk_path, arguments=" ".join(args))
+    kwargs = {
+        **({"work_dir": split(dirname(__file__))[0]} if target_exe.endswith("python.exe") or target_exe.endswith("pythonw.exe") else {})
+    }
+    pylnk3.for_file(target_exe, lnk_path, arguments=" ".join(args), **kwargs)
 
 
 def set_auto_startup_no_error():
